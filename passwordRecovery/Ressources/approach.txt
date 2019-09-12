@@ -1,0 +1,6 @@
+$ curl -i http://10.11.200.225/?page=recover
+Analyzed the output and spotted potential vulnerability:
+<input type="hidden" name="mail" value="webmaster@borntosec.com" maxlength="15">
+	<input type="submit" name="Submit" value= "Submit">
+In Chrome, inspected element of SUBMIT button, and changed nearby hidden code  to: <input type="hidden" name="admin" value="webmaster@borntosec.com" maxlength="15">
+Any change of name and value params of this line of code results in obtaining the flag.
