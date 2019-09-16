@@ -1,0 +1,5 @@
+Ressources: https://www.youtube.com/watch?v=dFci82qwXA0
+
+On a page http://10.11.200.225/?page=feedback
+Type in feedback name section “script”
+Or in message section an script alert: <script>alert(“XSS”)</script> with whatever text in name section
