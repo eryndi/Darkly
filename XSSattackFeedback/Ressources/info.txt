@@ -7,3 +7,6 @@ Or in message section an script alert: <script>alert(“XSS”)</script> with wh
 XSS attack tries to alter code on the site for another users by injecting spript which is not visible for the end user.
 For example in comment section, an ordinary text is visible but without sanitizing code <script>alert(“XSS”)</script>
 would not be visible and might be executed altering behaviour of the site.
+
+How to avoid?
+Sanitize input, there are libraries for that
