@@ -1,0 +1,7 @@
+Footer of the site contains redirectons to Facebook, Twitter and Instagram.
+Inspecting the code used for redirection reveals that it could be easily manipulated.
+
+<a href="index.php?page=redirect&amp;site=facebook" class="icon fa-facebook"></a>
+
+the reference attribute can be changed to whatever page, here I chose google.com
+http://10.11.200.225/index.php?page=redirect&site=google.com
