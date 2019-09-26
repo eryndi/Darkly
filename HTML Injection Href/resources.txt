@@ -1,0 +1,16 @@
+HTML Injection href data:
+INFO:
+
+Flag - 928d819fc19405ae09921a2b71227bd9aba106f9d2d37ac412e9e5a750f1506d
+
+STEPS:
+By inspecting the images on the home page you can find that the second nsa image is surrounded by <a href="?page=media&src=nsa"/></a>
+
+Reading over html injections in the resource below showed that data uri handlers such as an a tags href can be used for html injections with base64 data.
+
+Replacing the src=nsa with the example given in the resource src=data:text/html;base64,PHNjcmlwdD5hbGVydCg5KTwvc2NyaXB0Pg
+And then clicking on the image takes us to a new page with the flag.
+
+
+RESOURCES:
+https://deadliestwebattacks.com/html-injection-quick-reference/
