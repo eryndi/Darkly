@@ -1,0 +1,31 @@
+HTML Injection href data:
+INFO:
+
+Flag - 928d819fc19405ae09921a2b71227bd9aba106f9d2d37ac412e9e5a750f1506d
+
+STEPS:
+By inspecting the images on the home page you can find that the second nsa image is surrounded by <a href="?page=media&src=nsa"/></a>
+
+Reading over html injections in the resource below showed that data uri handlers such as an a tags href can be used for html xss injections with base64 data.
+
+The second resource explains that you can convert javascript injections into base64 and pass it as the data in the src part of the href.
+
+Using a base64 encoder we convert <script>alert('suhhh dude')</script> into PHNjcmlwdD5hbGVydCgnc3VoaGggZHVkZScpPC9zY3JpcHQ+
+
+Replacing the src=nsa with the example given in the first resource src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnc3VoaGggZHVkZScpPC9zY3JpcHQ+
+
+And then clicking on the image takes us to a new page with the flag.
+
+
+PREVENTION:
+
+Sanitizing - It's always a good idea to scrub the data clean of any potentially harmful markup
+
+Validation - Validating what is being sent to your site is always another important step. You should
+never render data that can be manipulated without making sure it's what you expect it to be.
+
+RESOURCES:
+https://deadliestwebattacks.com/html-injection-quick-reference/
+https://www.we45.com/blog/preventing-xss-with-base64-encoding-the-false-sense-of-web-application-security
+https://www.base64encode.org/
+https://www.paladion.net/blogs/bypass-xss-filters-using-data-uris
