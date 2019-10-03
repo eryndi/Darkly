@@ -5,3 +5,5 @@ Inspecting the code used for redirection reveals that it could be easily manipul
 
 the reference attribute can be changed to whatever page, here I chose google.com
 http://10.11.200.225/index.php?page=redirect&site=google.com
+
+Use actual URLs in redirections.

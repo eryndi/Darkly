@@ -1,0 +1,29 @@
+Flag - 46910d9ce35b385885a9f7e2b336249d622f29b267a1771fbacf52133beddba8
+
+Researching how to hack upload inputs had us come across the youtube video listed below
+
+By installing an interceptor (Burp Suite Community Edition) and having it set up with
+our browser we are able to pause all post requests to see what exactly it is we are
+sending through the request.
+
+We know that the site is checking to make sure that a jpg file is being uploaded
+so as to prevent files of other types from going through to the backend
+
+We can manipulate this by creating a file that we want to send through (also
+in this directory) and adding .jpg to the end of it
+
+We then select it on the upload page, and when we click send the interceptor catches
+it. We can then go in and change the name of our file to remove the .jpg and then
+continue the post request.
+
+By doing so we receive the flag 46910d9ce35b385885a9f7e2b336249d622f29b267a1771fbacf52133beddba8
+
+
+Prevention:
+
+The best way of preventing this is making sure that the backend is checking what
+is coming through from the post request and responding appropriately.
+
+RESOURCES:
+https://www.youtube.com/watch?v=drcru-MI2sI
+Burp Suite Community Edition
