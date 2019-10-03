@@ -1,0 +1,33 @@
+STEPS:
+When clicking on the link at the bottom of the homepage we get redirected to a page
+that is all about albatrosses. Because the page is so weird we decided to inspect
+the markup.
+
+There are comments left on in the html markup that mention things like
+
+You must cumming from : "https://www.nsa.gov/" to go to the next step
+Let's use this browser : "ft_bornToSec". It will help you a lot.
+
+This gives us a hint that we need to modify the header to say we are coming from
+the nsa website and that we are using a browser of ft_bornToSec.
+
+In order to see what headers are being sent through the page we used the HTTP Header
+Live Firefox add-on. It shows every request going through the site and their details.
+We then needed to be able to change the header that would be sent when arriving at
+the albatross url.
+
+To accomplish this we came across the Firefox Add-on Simple Modify Headers which
+allows you to specify a url you would like to manipulate the header for. Every
+time you visit the url it will change the header to what you have specified.
+We set it up to use https://www.nsa.gov/ as the referer and ft_bornToSec as the
+User-Agent. We then refresh the page and we are greeted with the flag.
+
+PREVENTION:
+The best way to prevent a more malicious attack which could allow someone to access
+restricted pages is to use a system of token authentication such as Json Web Token.
+This way you can be sure that the user is who they say they are and not show special
+information based on data that could easily be changed.
+
+RESOURCES:
+HTTP Head Live Firefox Add-on
+Simple Modify Headers Firefox Add-on
