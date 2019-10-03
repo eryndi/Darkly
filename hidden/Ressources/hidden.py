@@ -2,7 +2,6 @@
 
 import io
 import requests
-import time
 
 
 def has_numbers(string):
@@ -26,7 +25,6 @@ def recursion(urls, url):
     readme = "{}{}".format(url, "README")
     response = requests.get(readme)
     if has_numbers(response.text):
-        time.sleep(3)
         print("I found a flag", response.text, "here:", readme)
         return
     else:
