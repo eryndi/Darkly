@@ -42,7 +42,11 @@ For the user GetThe Flag we see a hashed password of 5ff9d0165b4f92b14994e5c685c
 Decrypted this md5 hash is FortyTwo
 We turn that to lower case fortytwo and run it through sha256 to get the flag of 10A16D834F9B1E4068B25C4C46FE0284E99E44DCEAF08098FC83925BA6310FF5
 
-
+PREVENTION:
+Santitizing all of your inputs is one of the best ways to prevent against this kind of attack.
+In the case of sql use mysql_real_escape_string() to get of any dangerous characters.
+Don't use dynamic sql queries with user input.
+Don't use weak cyphers like md5.
 
 RESOURCES:
 http://www.sqlinjection.net/tutorial/

@@ -19,10 +19,7 @@ And then clicking on the image takes us to a new page with the flag.
 
 PREVENTION:
 
-Sanitizing - It's always a good idea to scrub the data clean of any potentially harmful markup
-
-Validation - Validating what is being sent to your site is always another important step. You should
-never render data that can be manipulated without making sure it's what you expect it to be.
+Avoid inserting the data of the URL directly on the page. Pass and ID instead that would be used to point to images from the DB.
 
 RESOURCES:
 https://deadliestwebattacks.com/html-injection-quick-reference/

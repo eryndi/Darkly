@@ -21,6 +21,12 @@ Steps & Commands:
 	Cracking the md5 hash shows us that the hashed word is “albatroz”
 	Placing “albatroz” into a sha256 hasher gives us the flag F2A29020EF3132E01DD61DF97FD33EC8D7FCD1388CC9601E7DB691D17D4D6188
 
+PREVENTION:
+Santitizing all of your inputs is one of the best ways to prevent against this kind of attack.
+In the case of sql use mysql_real_escape_string() to get of any dangerous characters.
+Don't use dynamic sql queries with user input.
+Don't use weak cyphers like md5.
+
 RESOURCES:
 http://www.sqlinjection.net/tutorial/
 https://portswigger.net/web-security/sql-injection/union-attacks

@@ -19,6 +19,14 @@ Decrypting the hash shows root:dragon
 
 Trying the username root with the password dragon on the /admin page gives us the flag.
 
+PREVENTION:
+
+Remove useless files from the root of your website, especially ones that contain sensitive data.
+Don't include files with sensitive data in the root of your website.
+Do not try to hide sensitive data with a weak cypher like md5.
+Use an htaccess to protect any sensitive files.
+Don't trust the robots.txt file to be secure.
+
 
 RESOURCES:
 https://stackoverflow.com/questions/273743/using-wget-to-recursively-fetch-a-directory-with-arbitrary-files-in-it

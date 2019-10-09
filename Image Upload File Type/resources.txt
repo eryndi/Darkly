@@ -23,6 +23,8 @@ Prevention:
 
 The best way of preventing this is making sure that the backend is checking what
 is coming through from the post request and responding appropriately.
+The front end can help prevent malicious uploads but, as shown with the interceptor,
+people with enough time and knowledge can get past those barriers.
 
 RESOURCES:
 https://www.youtube.com/watch?v=drcru-MI2sI

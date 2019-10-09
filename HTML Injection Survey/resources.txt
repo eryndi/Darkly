@@ -7,7 +7,8 @@ Flag - 03a944b434d5baff05f46c4bede5792551a2595574bcafc9a6e25f67c382ccaa
 STEPS:
 If you inspect the page on the survey drop down where the values are selected you will see the option html tag with a set value
 
-If we change the value to something like 100000 and select that option the site will run its submit code ad we are returned the flag.
+If we change the value to something like 100000 and select that option the site will run its submit code with the enlarged value and we are returned the flag.
 
 AVOIDANCE:
-Make sure that the function that is processing the change checks for values that are bigger than it expects
+Make sure that the function that is processing the change checks for values that are bigger than it expects.
+You can not rely on the front end to be the sole protection against what can be sent to your backend.
