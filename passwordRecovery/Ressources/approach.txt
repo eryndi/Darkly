@@ -5,4 +5,4 @@ Analyzed the output and spotted potential vulnerability:
 In Chrome, I inspected element of SUBMIT button, and changed nearby hidden code  to: <input type="hidden" name="admin" value="webmaster@borntosec.com" maxlength="15">
 Any change of name and value params of this line of code results in obtaining the flag.
 
-To avoid such a vulneralbility an email address value should be handled by backend not the front.
+To avoid such a vulnerability an email address value should be handled by backend not the front.

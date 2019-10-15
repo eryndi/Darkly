@@ -1,11 +1,11 @@
-Ressources: https://www.youtube.com/watch?v=dFci82qwXA0
+Resources: https://www.youtube.com/watch?v=dFci82qwXA0
 
 On a page http://10.11.200.225/?page=feedback
 Type in feedback name section “script” or in message section an script alert: <script>alert(“XSS”)</script> with whatever text in name section.
 
-XSS attack tries to alter code on the site for another users by injecting spript which is not visible for the end user.
+XSS attack tries to alter code on the site for another users by injecting script which is not visible for the end user.
 For example in comment section, an ordinary text is visible but without sanitizing code <script>alert(“XSS”)</script>
-would not be visible and might be executed altering behaviour of the site.
+would not be visible and might be executed altering behavior of the site.
 
 How to avoid?
 Sanitize input, there are libraries for that

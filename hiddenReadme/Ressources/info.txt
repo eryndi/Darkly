@@ -1,4 +1,11 @@
-Using command tool wget we discovered file .hidden at the html root directory. 
-In the readme file we discover lead advising us to exlore all readme files in 
-the dierctory tree. Using a script which checks all README files recursively we
+Googled how to recursively search for websites files. Came across the wget command.
+
+Websites often forget to hide their hidden files. One way to see if hidden files exist is to use wget. After I homebrew installed the command I used the resource below and placed in the websites address to the command wget --recursive --no-parent http://10.11.200.61/
+
+It downloaded everything from the directory and showed that there were some files that were supposed to be hidden from the url. One called .hidden and another called robots.txt
+
+Reading robots.txt showed that there existed /.hidden and /whatever in the directory
+
+In the readme file we discover lead advising us to explore all readme files in 
+the directory tree. Using a script which checks all README files recursively we
 obtain a flag.
