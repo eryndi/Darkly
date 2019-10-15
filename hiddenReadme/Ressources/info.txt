@@ -1,0 +1,4 @@
+Using command tool wget we discovered file .hidden at the html root directory. 
+In the readme file we discover lead advising us to exlore all readme files in 
+the dierctory tree. Using a script which checks all README files recursively we
+obtain a flag.
